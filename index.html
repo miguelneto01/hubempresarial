@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Hub Empresarial UniMB</title>
+    <!-- Google Fonts: Montserrat + fallback Arial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(145deg, #fff9f5 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 25px 16px 30px;
+            position: relative;
+        }
+
+        /* Efeito de brilho sutil no fundo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(201, 162, 81, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Cabeçalho sem imagem, apenas texto estilizado */
+        .brand-header {
+            text-align: center;
+            margin: 5px 0 20px;
+            width: 100%;
+        }
+
+        .brand-header .main-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #7a0c0d; /* vermelho institucional */
+            letter-spacing: -0.02em;
+            line-height: 1;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 rgba(201, 162, 81, 0.2);
+            margin-bottom: 5px;
+        }
+
+        .brand-header .sub-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #C9A251; /* dourado */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-top: 2px solid #C9A251;
+            border-bottom: 2px solid #C9A251;
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(122,12,13,0.1);
+        }
+
+        /* Wrapper do vídeo - mais harmônico */
+        .video-wrapper {
+            width: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -8px rgba(122, 12, 13, 0.3);
+            border: 2px solid #C9A251;
+            background-color: #000;
+            margin-bottom: 18px; /* Reduzido para aproximar os elementos */
+            aspect-ratio: 9 / 16;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            max-width: 400px; /* Limita a largura máxima */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 40px -10px #7a0c0d;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Texto abaixo do vídeo - mais compacto */
+        .description {
+            text-align: center;
+            padding: 18px 15px;
+            margin-bottom: 25px; /* Reduzido */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(201, 162, 81, 0.15);
+            border: 1px solid rgba(201, 162, 81, 0.3);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .description h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #7a0c0d;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .description h2 i {
+            color: #C9A251;
+            font-size: 1.9rem;
+        }
+
+        .description p {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            line-height: 1.4;
+            font-weight: 500;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        /* Botão CTA - posicionado mais acima */
+        .cta-button {
+            display: none;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(145deg, #7a0c0d, #a83233);
+            padding: 18px 25px;
+            border-radius: 70px;
+            box-shadow: 0 15px 30px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            animation: pulseGlow 2s infinite, fadeInUp 0.5s ease-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-button i {
+            margin-right: 12px;
+            font-size: 2rem;
+            vertical-align: middle;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        .cta-button:hover {
+            transform: scale(1.02);
+            background: linear-gradient(145deg, #8b1a1b, #b54142);
+            box-shadow: 0 20px 40px rgba(122, 12, 13, 0.6), 0 0 0 3px #C9A251 inset, 0 0 0 6px rgba(255,255,255,0.5) inset;
+        }
+
+        /* Animação pulsante no botão */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 15px 30px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset; }
+            50% { box-shadow: 0 20px 40px rgba(201, 162, 81, 0.6), 0 0 0 3px #C9A251 inset, 0 0 0 8px rgba(255,255,255,0.5) inset; }
+            100% { box-shadow: 0 15px 30px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ajustes mobile pequeno */
+        @media (max-width: 380px) {
+            .brand-header .main-title { font-size: 2.2rem; }
+            .brand-header .sub-title { font-size: 1.4rem; letter-spacing: 2px; }
+            .description h2 { font-size: 1.6rem; }
+            .cta-button { font-size: 1.4rem; padding: 15px 20px; }
+            .video-wrapper { max-width: 340px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho com HUB EMPRESARIAL e UNIMB -->
+        <div class="brand-header">
+            <div class="main-title">HUB EMPRESARIAL</div>
+            <div class="sub-title">UNIMB</div>
+        </div>
+
+        <!-- Vídeo YouTube Shorts atualizado -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/ZXkTZjkRt5s?autoplay=1&mute=1&loop=1&playlist=ZXkTZjkRt5s&controls=0&modestbranding=1&showinfo=0&rel=0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Texto abaixo do vídeo -->
+        <div class="description">
+            <h2>
+                <i class="fas fa-fire"></i> 
+                EXCLUSIVO
+                <i class="fas fa-fire"></i>
+            </h2>
+            <p>Estratégias práticas para alavancar seu negócio com o Hub Empresarial UniMB.</p>
+        </div>
+
+        <!-- Botão Instagram (surge após 25s) -->
+        <a href="https://www.instagram.com/hub_empresarial_unimb/" target="_blank" class="cta-button" id="instagramBtn">
+            <i class="fab fa-instagram"></i> Siga no Instagram
+        </a>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('instagramBtn').style.display = 'inline-block';
+        }, 25000); // 25 segundos
+    </script>
+</body>
+</html>
