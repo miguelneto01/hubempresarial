@@ -3,172 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Hub Empresarial UniMB - Lançamento 27/02/2026</title>
-    <!-- Google Fonts: Montserrat -->
+    <title>Hub Empresarial UniMB · Conteúdo exclusivo</title>
+    <!-- Google Fonts: Montserrat + fallback -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: linear-gradient(145deg, #fff9f5 0%, #ffffff 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: #faf9f8;  /* fundo neutro suave */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 16px 0;
-            position: relative;
+            padding: 0 16px 0;
         }
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(201, 162, 81, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: -1;
-        }
+
         .container {
-            max-width: 480px;
+            max-width: 440px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1;
+            background: #ffffff;
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            margin: 20px 0 20px;
+            padding: 24px 20px 30px;
+            transition: all 0.2s ease;
         }
-        /* Cabeçalho com data de lançamento */
-        .brand-header {
+
+        /* Cabeçalho com logo textual */
+        .brand {
             text-align: center;
-            margin: 5px 0 15px;
-            width: 100%;
+            margin-bottom: 16px;
         }
-        .brand-header .main-title {
-            font-size: 2.5rem;
+
+        .brand h1 {
+            font-size: 2.4rem;
             font-weight: 800;
-            color: #7a0c0d;
-            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #7a0c0d 0%, #a12d2e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
             line-height: 1.1;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0 rgba(201, 162, 81, 0.2);
-            margin-bottom: 5px;
         }
-        .brand-header .sub-title {
-            font-size: 1.6rem;
-            font-weight: 700;
+
+        .brand span {
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #C9A251;
+            display: block;
+            margin-top: 4px;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            border-top: 2px solid #C9A251;
-            border-bottom: 2px solid #C9A251;
-            display: inline-block;
-            padding: 4px 15px;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(4px);
-            border-radius: 40px;
-            box-shadow: 0 5px 15px rgba(122,12,13,0.1);
         }
-        /* Texto de vendas (chamada principal) */
-        .sales-headline {
+
+        /* Título persuasivo */
+        .headline {
             text-align: center;
-            margin: 10px 0 20px;
-            width: 100%;
+            margin: 8px 0 18px;
         }
-        .sales-headline h2 {
-            font-size: 1.9rem;
+
+        .headline h2 {
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #7a0c0d;
+            color: #1e293b;
             line-height: 1.3;
         }
-        .sales-headline h2 span {
+
+        .headline h2 i {
             color: #C9A251;
-            background: #7a0c0d10;
-            padding: 0 5px;
-            border-radius: 8px;
+            margin: 0 6px;
         }
-        .sales-headline .date-highlight {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-top: 5px;
-            background: rgba(201, 162, 81, 0.2);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 40px;
+
+        .headline p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-top: 8px;
+            font-weight: 500;
         }
-        /* Wrapper do vídeo */
+
+        /* Wrapper do vídeo - sem mute */
         .video-wrapper {
             width: 100%;
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 30px -8px rgba(122, 12, 13, 0.4);
-            border: 3px solid #C9A251;
-            background-color: #000;
-            margin-bottom: 20px;
+            box-shadow: 0 20px 35px -8px rgba(122, 12, 13, 0.25);
+            border: 2px solid #C9A251;
+            background: #000;
+            margin-bottom: 24px;
             aspect-ratio: 9 / 16;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             max-width: 360px;
             margin-left: auto;
             margin-right: auto;
+            transition: transform 0.2s ease;
         }
+
         .video-wrapper:hover {
             transform: scale(1.01);
-            box-shadow: 0 25px 35px -8px #7a0c0d;
         }
+
         .video-wrapper iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        /* Benefícios / bullet points */
-        .benefits {
-            width: 100%;
-            max-width: 400px;
-            margin: 10px 0 20px;
-            background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(5px);
-            border-radius: 30px;
-            padding: 20px 15px;
-            border: 1px solid rgba(201,162,81,0.3);
-        }
-        .benefits h3 {
-            font-size: 1.6rem;
-            color: #7a0c0d;
-            margin-bottom: 15px;
+
+        /* Call to action textual */
+        .cta-text {
             text-align: center;
+            margin-bottom: 28px;
+            padding: 0 10px;
         }
-        .benefits ul {
-            list-style: none;
-        }
-        .benefits li {
-            font-size: 1.1rem;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+        .cta-text p {
+            font-size: 1.2rem;
+            color: #1e293b;
             font-weight: 500;
+            line-height: 1.5;
         }
-        .benefits li i {
+
+        .cta-text p i {
             color: #C9A251;
-            font-size: 1.3rem;
-            min-width: 24px;
-            text-align: center;
+            margin: 0 4px;
         }
-        /* Botão CTA principal (surge após 25s) */
-        .cta-button {
-            display: none;
+
+        .cta-text strong {
+            color: #7a0c0d;
+            font-weight: 700;
+        }
+
+        /* Botão principal - com áudio liberado, ele já pode aparecer antes? Vamos manter o timeout de 25s, mas agora com som */
+        .btn-instagram {
+            display: none;  /* ainda surge após 25s */
             width: 100%;
-            max-width: 340px;
-            margin: 10px auto 20px;
+            max-width: 320px;
+            margin: 10px auto 0;
             text-align: center;
             background: linear-gradient(145deg, #7a0c0d, #a83233);
-            padding: 18px 25px;
+            padding: 18px 28px;
             border-radius: 60px;
-            box-shadow: 0 15px 25px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset;
+            box-shadow: 0 12px 25px -5px rgba(122, 12, 13, 0.5), 0 0 0 3px #C9A251 inset;
             transition: all 0.25s ease;
             border: none;
             cursor: pointer;
@@ -177,114 +162,103 @@
             font-weight: 800;
             font-size: 1.5rem;
             letter-spacing: 1px;
-            animation: pulseGlow 2s infinite, fadeInUp 0.5s ease-out;
-            z-index: 10;
+            animation: fadeInUp 0.5s ease-out;
         }
-        .cta-button i {
-            margin-right: 10px;
+
+        .btn-instagram i {
+            margin-right: 12px;
             font-size: 2rem;
             vertical-align: middle;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
         }
-        .cta-button:hover {
+
+        .btn-instagram:hover {
             transform: scale(1.02);
             background: linear-gradient(145deg, #8b1a1b, #b54142);
-            box-shadow: 0 20px 30px rgba(122, 12, 13, 0.6), 0 0 0 3px #C9A251 inset, 0 0 0 6px rgba(255,255,255,0.5) inset;
+            box-shadow: 0 18px 30px -5px rgba(122, 12, 13, 0.7), 0 0 0 3px #C9A251 inset;
         }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 15px 25px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset; }
-            50% { box-shadow: 0 18px 30px rgba(201, 162, 81, 0.6), 0 0 0 3px #C9A251 inset, 0 0 0 8px rgba(255,255,255,0.5) inset; }
-            100% { box-shadow: 0 15px 25px rgba(122, 12, 13, 0.4), 0 0 0 3px #C9A251 inset, 0 0 0 5px rgba(255,255,255,0.3) inset; }
-        }
+
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Rodapé com copyright */
+
+        /* Rodapé */
         .footer {
             width: 100%;
             text-align: center;
-            padding: 20px 0 15px;
-            margin-top: 20px;
-            border-top: 1px solid rgba(201,162,81,0.3);
+            padding: 16px 0 20px;
             color: #7a0c0d;
             font-weight: 500;
-            font-size: 0.95rem;
-            background: rgba(255,255,255,0.5);
-            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(201, 162, 81, 0.2);
+            background: transparent;
         }
+
         .footer i {
             color: #C9A251;
             margin: 0 4px;
         }
-        .footer a {
-            color: #7a0c0d;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
+
+        /* Ajuste mobile pequeno */
         @media (max-width: 380px) {
-            .brand-header .main-title { font-size: 2rem; }
-            .brand-header .sub-title { font-size: 1.3rem; }
-            .sales-headline h2 { font-size: 1.6rem; }
-            .cta-button { font-size: 1.3rem; padding: 15px 20px; }
-            .video-wrapper { max-width: 320px; }
+            .brand h1 { font-size: 2rem; }
+            .brand span { font-size: 1.1rem; }
+            .headline h2 { font-size: 1.5rem; }
+            .btn-instagram { font-size: 1.3rem; padding: 15px 22px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Cabeçalho com data -->
-        <div class="brand-header">
-            <div class="main-title">HUB EMPRESARIAL</div>
-            <div class="sub-title">UNIMB</div>
+        <!-- Marca -->
+        <div class="brand">
+            <h1>HUB EMPRESARIAL</h1>
+            <span>UNIMB</span>
         </div>
 
-        <!-- Título de vendas -->
-        <div class="sales-headline">
-            <h2>⚡ O <span>LANÇAMENTO</span> QUE VAI MUDAR SEU NEGÓCIO ⚡</h2>
-            <div class="date-highlight">
-                <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 27 DE FEVEREIRO DE 2026
-            </div>
+        <!-- Título persuasivo -->
+        <div class="headline">
+            <h2>
+                <i class="fas fa-quote-left"></i> 
+                Estratégia que funciona 
+                <i class="fas fa-quote-right"></i>
+            </h2>
+            <p>Resultados reais para quem quer crescer</p>
         </div>
 
-        <!-- Vídeo do YouTube Shorts (atualizado) -->
+        <!-- Vídeo com SOM (parâmetro mute removido) -->
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/wk47h7ccvI4?autoplay=1&mute=1&loop=1&playlist=wk47h7ccvI4&controls=0&modestbranding=1&showinfo=0&rel=0" 
+            <iframe src="https://www.youtube.com/embed/wk47h7ccvI4?autoplay=1&loop=1&playlist=wk47h7ccvI4&controls=0&modestbranding=1&showinfo=0&rel=0" 
                     allow="autoplay; encrypted-media; fullscreen" 
                     allowfullscreen>
             </iframe>
         </div>
 
-        <!-- Benefícios / texto de vendas adicional -->
-        <div class="benefits">
-            <h3>🔥 Por que você precisa ver isso?</h3>
-            <ul>
-                <li><i class="fas fa-check-circle"></i> Estratégias exclusivas para 2026</li>
-                <li><i class="fas fa-check-circle"></i> Cases reais de sucesso</li>
-                <li><i class="fas fa-check-circle"></i> Acesso vitalício ao conteúdo</li>
-                <li><i class="fas fa-check-circle"></i> Bônus especiais para os primeiros</li>
-            </ul>
+        <!-- Texto de incentivo para seguir -->
+        <div class="cta-text">
+            <p>
+                <i class="fas fa-check-circle" style="color:#C9A251;"></i> 
+                <strong>Quer mais conteúdos como este?</strong><br>
+                No nosso Instagram você encontra diariamente dicas práticas, cases de sucesso e estratégias exclusivas para alavancar seu negócio.
+            </p>
         </div>
 
-        <!-- Botão CTA (surge após 25 segundos) -->
-        <a href="https://www.instagram.com/hub_empresarial_unimb/" target="_blank" class="cta-button" id="instagramBtn">
-            <i class="fab fa-instagram"></i> GARANTA SUA VAGA AGORA
+        <!-- Botão que leva ao Instagram (surge após 25s) -->
+        <a href="https://www.instagram.com/hub_empresarial_unimb/" target="_blank" class="btn-instagram" id="followBtn">
+            <i class="fab fa-instagram"></i> Seguir agora
         </a>
     </div>
 
-    <!-- Rodapé com copyright -->
+    <!-- Rodapé simples -->
     <div class="footer">
-        <i class="fas fa-copyright"></i> 2026 Hub Empresarial UniMB. Todos os direitos reservados.<br>
-        <span style="font-size: 0.85rem; color: #C9A251;">Transformando negócios através do conhecimento</span>
+        <i class="fas fa-copyright"></i> 2026 Hub Empresarial UniMB · Todos os direitos reservados
     </div>
 
     <script>
+        // Aparece o botão após 25 segundos
         setTimeout(function() {
-            document.getElementById('instagramBtn').style.display = 'inline-block';
-        }, 25000); // 25 segundos
+            document.getElementById('followBtn').style.display = 'inline-block';
+        }, 25000);
     </script>
 </body>
 </html>
